@@ -1,20 +1,15 @@
 import { Router } from "express";
 
 const homeRouter = Router()
+import {addMessage,getMessageInfo,getPageInfo} from "../controller/messageController.js"
 
 // Client requests to see homepage
-homeRouter.get("/",(req,res) => {
-    res.send("Nothing much")
-})
+homeRouter.get("/",getPageInfo)
 
 // Client requests to create message
-homeRouter.post("/", (req,res) => {
-    res.send("New Message")
-})
+homeRouter.post("/", addMessage)
 
 // Client requests to see message info
-homeRouter.get("/:messageId",(req,res) => {
-    res.send("Message info")
-})
+homeRouter.get("/:messageId",getMessageInfo)
 
 export default homeRouter

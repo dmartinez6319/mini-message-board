@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Board</title>
+</head>
+<body>
+    <header>
+        <h1>Message Board</h1>
+        <p>signed in as anonymous</p>
+    </header>
+    <main>
+        <div class="message-container">
+            <% msgs.forEach((userMsg) => { %>
+
+                <div>
+                    <%=userMsg.user%>
+                    <%=userMsg.added%>
+
+                    <a href="/<%=userMsg.id%>">
+                        <%=userMsg.text%>
+                    </a>
+                    
+                </div>
+                
+            <% }) %>
+        </div>
+        <form class="message-input" action="/" method="post">
+            <input name="username" type="text" placeholder="Enter username...">
+            <input name="userMessage" type="text" placeholder="Enter message...">
+            <button type="submit">+</button>
+        </form>
+    </main>
+</body>
+</html>
