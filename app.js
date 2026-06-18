@@ -11,6 +11,8 @@ const port = process.env.PORT || 3000
 
 import homeRouter from "./routes/homeRoute.js"
 
+app.use(express.static('public'))
+
 // Receive form input info from requests
 app.use(express.urlencoded({extended : true}))
 

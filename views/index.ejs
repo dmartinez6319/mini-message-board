@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Board</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body class="">
     <header>
         <h1>Message Board</h1>
         <p>signed in as anonymous</p>
     </header>
     <main>
-        <div class="message-container">
+        <div class="message-container" >
             <% msgs.forEach((userMsg) => { %>
 
-                <div>
+                <div flex flex-col>
                     <%=userMsg.user%>
                     <%=userMsg.added%>
 
