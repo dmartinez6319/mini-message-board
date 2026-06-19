@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Details</title>
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
 </head>
-<body>
-    <p>Username</p>
-    <p><%= username %></p>
+<body class="text-white min-h-screen bg-slate-900 flex flex-col justify-center items-center gap-2">
+    <div class="  flex gap-4 p-6  items-center justify-center">
+        <%- include('components/messageDetailCard', { label: 'Username', value: username }) %>
+        <%- include('components/messageDetailCard', { label: 'Message Content', value: message }) %>
+        <%- include('components/messageDetailCard', { label: 'Date', value: date }) %>
+        <%- include('components/messageDetailCard', { label: 'Message Id', value: id }) %>
+    </div>
+    <a href="/" class="p-2 bg-slate-800 hover:bg-slate-700 transition-all outline-slate-600 outline rounded-md ">Return</a>
 
-    <p>Message Content</p>
-    <p><%= message %></p>
+</body>
 
-    <p>Date</p>
-    <p><%= date %></p>
-
-    <p>Message Id</p>
-    <p><%= id %></p>
 </body>
 </html>
