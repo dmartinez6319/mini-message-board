@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+* {
+    /* outline: 1px solid red */
+}
+
+/* the specific scrollbar container */
+.message-container::-webkit-scrollbar {
+    width: 8px; 
+}
+
+/*path the scrollbar slides on */
+.message-container::-webkit-scrollbar-track {
+    background: #0f172a;
+    border-radius: 9999px;
+}
+
+/* the draggable thumb handle */
+.message-container::-webkit-scrollbar-thumb {
+    background: #334155; 
+    border-radius: 9999px; 
+}
+
+.message-container::-webkit-scrollbar-thumb:hover {
+    background: #475569; 
+}

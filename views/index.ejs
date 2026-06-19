@@ -4,34 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Board</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5c122f6877.js" crossorigin="anonymous"></script>
+
 </head>
-<body class="">
-    <header>
-        <h1>Message Board</h1>
-        <p>signed in as anonymous</p>
+<body class="bg-slate-900 text-slate-50 flex flex-col min-h-screen ">
+    <header class=" grow-0 bg-slate-800 p-6  flex items-center justify-between border-b-amber-300 border-b">
+        <h1 class="text-2xl">Message Board</h1>
+        <p class="font-extralight flex">signed in as <%=typeof username !== 'undefined' ? username : ''%></p>
     </header>
-    <main>
-        <div class="message-container" >
-            <% msgs.forEach((userMsg) => { %>
+    <main class="p-6 flex flex-col items-center gap-2 max-w-130 w-full mx-auto grow" >
+        <div class="h-[600px] w-full pr-4 overflow-y-auto message-container flex flex-col-reverse gap-3 ">
+            <% msgs.slice().reverse().forEach((userMsg) => { %>
+            <a href="/<%=userMsg.id%>" class="w-full">
 
-                <div flex flex-col>
-                    <%=userMsg.user%>
-                    <%=userMsg.added%>
+                    <div class="bg-slate-800 hover:bg-slate-700  w-full transition-all flex flex-col rounded-md p-5">
 
-                    <a href="/<%=userMsg.id%>">
-                        <%=userMsg.text%>
-                    </a>
-                    
-                </div>
-                
+                            <div class="flex gap-2 justify-between">
+                            <p class="font-bold"><%=userMsg.user%></p>
+                            <p class="font-extralight">
+                                <% 
+                                    const date = userMsg.added 
+                                    const year = date.getFullYear();
+                                    const month = date.getMonth() + 1;
+                                    const day = date.getDate();
+                                %>
+                                <%= year%>-<%=month%>-<%=day%>
+
+                            </p>
+                        </div>
+                            <p><%=userMsg.text%></p>
+
+
+                        
+                    </div>
+            </a>
+
             <% }) %>
         </div>
-        <form class="message-input" action="/" method="post">
-            <input name="username" type="text" placeholder="Enter username...">
-            <input name="userMessage" type="text" placeholder="Enter message...">
-            <button type="submit">+</button>
+        <form class="message-input w-full flex gap-2 justify-between " action="/" method="post">
+            <input class="bg-slate-700 rounded-md p-2 border-slate-400 border-b" value="<%= typeof username !== 'undefined' ? username : ''%>" name="username" type="text" placeholder="Enter username...">
+            <input class="bg-slate-700 rounded-md p-2 border-slate-400 border-b" name="userMessage" type="text" placeholder="Enter message..." required maxlength="100">
+            
+            <button class="bg-slate-700 rounded-full p-2 min-w-10 border-slate-400 border-b cursor-pointer hover:bg-slate-600 transition-all" type="submit">+</button>
         </form>
     </main>
+    <footer class="bg-slate-800  flex gap-2 justify-center items-center grow-0 p-6">
+    
+        <p class="">2026 Mini Message Board TOP Project ❤️ ✔️ </p>
+        <a class="hover:scale-200 transition-all" href="https://github.com/dmartinez6319/mini-message-board"><i class="fa fa-github" aria-hidden="true"></i></a>
+
+    </footer>
 </body>
 </html>

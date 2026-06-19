@@ -2,11 +2,13 @@ import messages from "../model/messages.js"
 
 const addMessage = (req,res) => {
 
+    const username = (typeof req.body.username === undefined || req.body.username === "") ? "Anonymous" : req.body.username
+
     const newMessage = {
 
         id: messages.length,
         text: req.body.userMessage,
-        user: req.body.username,
+        user: username,
         added: new Date()
 
     }
@@ -15,8 +17,8 @@ const addMessage = (req,res) => {
 
     console.log(newMessage)
 
-    res.redirect("/")
-
+    // encodeURIComponent keeps spaces and special characters safe in URLs.
+    res.redirect(`/?username=${encodeURIComponent(req.body.username)}`)
 }
 
 const getMessageInfo = (req,res) => {
@@ -25,7 +27,8 @@ const getMessageInfo = (req,res) => {
     const selectedMessage = messages.find( msg => msg.id == idParam)
 
     if (!selectedMessage) {
-        res.send("User does not exist! :(")
+        return res.send("User does not exist! :(")
+        
     }
 
     res.render("messageDetails", {
@@ -39,7 +42,9 @@ const getMessageInfo = (req,res) => {
 
 const getPageInfo = (req,res) => {
 
-    res.render("index", {msgs : messages})
+    const savedUsername = req.query.username || "Anonymous"
+
+    res.render("index", {msgs : messages,username: savedUsername})
 }
 
 export {addMessage,getMessageInfo,getPageInfo}
