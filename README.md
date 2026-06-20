@@ -38,12 +38,12 @@ npm i
 
 **2. Start the server**
 ```bash
-node app.js
+npm start 
 ```
 
 **3. Open the port in the browser**
 ```
-http://localhost:8080
+http://localhost:3000
 ```
 
 ---
@@ -54,6 +54,6 @@ http://localhost:8080
 | ------ | --------------------- | ------------------------------------------ |
 | `GET`  | `/`                   | Renders the message feed                   |
 | `POST` | `/new`                | Submits a new message from the dialog form |
-| `GET` | `/message/:messageId` | Opens the detail view for a single message |
+| `GET` | `/message/:messageId`  | Opens the detail view for a single message |
 
 
