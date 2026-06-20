@@ -8,7 +8,8 @@ A mini messaging board where users can write short messages to be publically dis
 ## Tech Stack
 - **Runtime** - NodeJs
 - **Templating** - EJS
-- **Styling** - Vanilla CSS
+- **Styling** - Tailwind CSS
+- **Framework** - ExpressJs
 
 ---
 
